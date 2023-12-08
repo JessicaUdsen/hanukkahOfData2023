@@ -41,3 +41,6 @@ namePhoneData <- customers %>%
   mutate(lastName = sapply(strsplit(name, ' '), function(x) tolower(x[2]))) %>%
   mutate(lastNameNums = sapply(lastName, function(x) letterToNum(x))) %>%
   filter(lastNameNums %in% phoneClean) 
+
+saveRDS(namePhoneData$phone, file = "detectivePhoneDay1.RDS") 
+
