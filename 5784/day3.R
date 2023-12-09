@@ -10,6 +10,7 @@ peterson <- customers %>%
 
 relevantCustomers <- customers %>%
   select(name, phone, birthdate, address, citystatezip) %>%
+  filter(citystatezip == peterson$citystatezip) %>%
   mutate(birthyear = year(birthdate),
          birthmonth = month(birthdate),
          birthday = day(birthdate)) %>%
@@ -24,8 +25,6 @@ relevantCustomers <- customers %>%
   })) %>%
   filter(gemini == 1)
 
-final <- inner_join(peterson, relevantCustomers, by = 'citystatezip')
-answer <- final$phone.y[1]
-saveRDS(answer, 'neighborPhoneDay3.RDS')
+saveRDS(relevantCustomers$phone, 'neighborPhoneDay3.RDS')
 
 
