@@ -11,9 +11,7 @@ peterson <- customers %>%
 relevantCustomers <- customers %>%
   select(name, phone, birthdate, address, citystatezip) %>%
   filter(citystatezip == peterson$citystatezip) %>%
-  mutate(birthyear = year(birthdate),
-         birthmonth = month(birthdate),
-         birthday = day(birthdate)) %>%
+  mutate(birthyear = year(birthdate)) %>%
   filter(birthyear %in% rabbitYears) %>%
   mutate(gemini = sapply(birthdate, function(x){
     year(x) <- 2023
