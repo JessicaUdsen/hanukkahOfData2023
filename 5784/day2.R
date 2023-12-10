@@ -1,10 +1,10 @@
 library(tidyverse)
 #Read problem statement here: https://hanukkah.bluebird.sh/5784/2/
 
-orders_items <- read_csv('noahs-orders_items.csv')
-customers <- read_csv('noahs-customers.csv')
-orders <- read_csv('noahs-orders.csv')
-products <- read_csv('noahs-products.csv')
+orders_items <- readRDS('ordersItems.RDS')
+orders <- readRDS('orders.RDS')
+customers <- readRDS('customers.RDS')
+products <- readRDS('products.RDS')
 
 customers <- customers %>%
   select(customerid, name, phone) %>%

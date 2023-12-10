@@ -26,7 +26,7 @@ numberLetterKey <- list('a' = 2,
                         'x' = 9,
                         'y' = 9,
                         'z' = 9)
-customers <- read_csv('noahs-customers.csv')
+customers <- readRDS('customers.RDS')
 
 letterToNum <- function(name){
   nameVect <- str_split_1(name, '')

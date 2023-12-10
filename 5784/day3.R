@@ -2,7 +2,7 @@ library(tidyverse)
 #See problem statement here https://hanukkah.bluebird.sh/5784/3/
 
 rabbitYears <- seq(from= 1903, to = 2023, by = 12)
-customers <- read_csv('noahs-customers.csv')
+customers <- readRDS('customers.RDS')
 
 petersonPhone <- readRDS('contractorsPhoneDay2.RDS')
 peterson <- customers %>%
