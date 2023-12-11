@@ -1,4 +1,5 @@
 library(tidyverse)
+#See problem statement here: https://hanukkah.bluebird.sh/5784/4/
 
 customers <- readRDS('customers.RDS')
 orders <- readRDS('orders.RDS')
