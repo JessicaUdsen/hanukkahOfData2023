@@ -40,6 +40,7 @@ bargainHunters <- salesDaysTable %>%
   group_by(customerid) %>%
   summarize(numberOrders = n()) %>%
   arrange(desc(numberOrders)) %>%
-  inner_join(customers, by = 'customerid')
+  inner_join(customers, by = 'customerid') %>%
+  head()
 
 saveRDS(bargainHunters$phone[[1]], 'bargainHunterPhoneDay6.RDS')
