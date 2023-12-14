@@ -1,28 +1,21 @@
 library(tidyverse)
-#See problem statement here: https://hanukkah.bluebird.sh/5784/5/
+#See problem statement here: https://hanukkah.bluebird.sh/5784-speedrun/5/
 
-statenIslandCustomers <- readRDS('customers.RDS') %>%
-  filter(str_detect(citystatezip, 'Staten Island')) %>%
-  select(customerid, name, citystatezip, phone)
+customers <- readRDS('customers.RDS')
 
 catProducts <- readRDS('products.RDS') %>%
   filter(type == 'PET') %>%
   mutate(desc = tolower(desc)) %>%
-  filter(str_detect(desc, 'cat'))
+  filter(str_detect(desc, 'cat food'))
 
 catOrdersItems <- readRDS('ordersItems.RDS') %>%
   filter(sku %in% catProducts$sku) %>%
-  select(orderid, sku)
+  group_by(orderid) %>%
+  summarize(totalItems = sum(qty)) %>%
+  filter(totalItems >= 10)
 
-catOrders <- readRDS('orders.RDS') %>%
-  select(orderid, customerid) %>%
-  inner_join(catOrdersItems, by = 'orderid') %>%
-  inner_join(statenIslandCustomers, by = 'customerid')
+orders <- readRDS('orders.RDS')
 
-catLady <- catOrders %>%
-  group_by(customerid) %>%
-  summarize(totalCatOrders = n()) %>%
-  arrange(desc(totalCatOrders)) %>%
-  inner_join(statenIslandCustomers, by = 'customerid')
-
-saveRDS(catLady$phone[2], 'catLadyPhoneDay5.RDS')
+catOrders <- inner_join(orders, catOrdersItems, by = 'orderid')
+catLady <- customers %>%
+  filter(customerid == catOrders$customerid[1])

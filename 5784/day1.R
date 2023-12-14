@@ -1,5 +1,5 @@
 library(tidyverse)
-#See the problem statement here: https://hanukkah.bluebird.sh/5784/1/
+#See the problem statement here: https://hanukkah.bluebird.sh/5784-speedrun/1/
 numberLetterKey <- list('a' = 2,
                         'b' = 2,
                         'c' = 2,

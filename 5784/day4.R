@@ -1,10 +1,10 @@
 library(tidyverse)
-#See problem statement here: https://hanukkah.bluebird.sh/5784/4/
+#See problem statement here: https://hanukkah.bluebird.sh/5784-speedrun/4/
 
 customers <- readRDS('customers.RDS')
 orders <- readRDS('orders.RDS')
 order_items <- readRDS('ordersItems.RDS')
-products <- readRDS('products.RDS') %>%
+bakeryProducts <- readRDS('products.RDS') %>%
   filter(type == 'BKY')
 
 bakerySKUs <- bakeryProducts$sku

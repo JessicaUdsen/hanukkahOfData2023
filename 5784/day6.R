@@ -1,5 +1,5 @@
 library(tidyverse)
-#Read problem statement: https://hanukkah.bluebird.sh/5784/6/
+#Read problem statement: https://hanukkah.bluebird.sh/5784-speedrun/6/
 
 orders <- readRDS('orders.RDS')
 ordersItems <- readRDS('ordersItems.RDS')

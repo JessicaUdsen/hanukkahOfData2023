@@ -1,5 +1,5 @@
 library(tidyverse)
-#Read problem statement here: https://hanukkah.bluebird.sh/5784/2/
+#Read problem statement here: https://hanukkah.bluebird.sh/5784-speedrun/2/
 
 orders_items <- readRDS('ordersItems.RDS')
 orders <- readRDS('orders.RDS')
@@ -9,7 +9,7 @@ products <- readRDS('products.RDS')
 customers <- customers %>%
   select(customerid, name, phone) %>%
   mutate(initials = sapply(strsplit(name, ' '), function(x) paste0(str_sub(x[1], 1, 1), str_sub(x[2], 1, 1)))) %>%
-  filter(initials == 'JP')
+  filter(initials == 'DS')
 
 orders <- orders %>%
   select(orderid, customerid, ordered) %>%

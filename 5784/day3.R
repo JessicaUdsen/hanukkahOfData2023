@@ -1,7 +1,7 @@
 library(tidyverse)
-#See problem statement here https://hanukkah.bluebird.sh/5784/3/
+#See problem statement here https://hanukkah.bluebird.sh/5784-speedrun/3/
 
-rabbitYears <- seq(from= 1903, to = 2023, by = 12)
+rabbitYears <- seq(from= 1907, to = 2023, by = 12)
 customers <- readRDS('customers.RDS')
 
 petersonPhone <- readRDS('contractorsPhoneDay2.RDS')
@@ -15,7 +15,7 @@ relevantCustomers <- customers %>%
   filter(birthyear %in% rabbitYears) %>%
   mutate(gemini = sapply(birthdate, function(x){
     year(x) <- 2023
-    if(x %within% interval(ymd('2023-06-21'), ymd('2023-07-22'))){
+    if(x %within% interval(ymd('2023-09-23'), ymd('2023-10-22'))){
       return(1)
     }else{
       return(0)
